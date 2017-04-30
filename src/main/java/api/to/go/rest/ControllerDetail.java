@@ -48,7 +48,7 @@ public class ControllerDetail<T, I, M, J>{
 				return Void.TYPE;
 			}
 		}, serializer::marshall);
-		log.debug(String.format("GET at %s", endpoint));
+		log.info(String.format("GET at %s", endpoint));
 		return this;
 	}
 
@@ -62,7 +62,7 @@ public class ControllerDetail<T, I, M, J>{
 				return Void.TYPE;
 			}
 		}, serializer::marshall);
-		log.debug(String.format("GET at %s/{id}", endpoint));
+		log.info(String.format("GET at %s/{id}", endpoint));
 		return this;
 	}
 
@@ -78,7 +78,7 @@ public class ControllerDetail<T, I, M, J>{
 						return Void.TYPE;
 					}
 				}, serializer::marshall);
-		log.debug(String.format("POST at %s", endpoint));
+		log.info(String.format("POST at %s", endpoint));
 		return this;
 	}
 
@@ -93,7 +93,7 @@ public class ControllerDetail<T, I, M, J>{
 
 			return Void.TYPE;
 		}, serializer::marshall);
-		log.debug(String.format("PUT at %s/{id}", endpoint));
+		log.info(String.format("PUT at %s/{id}", endpoint));
 		return this;
 	}
 
@@ -106,7 +106,7 @@ public class ControllerDetail<T, I, M, J>{
 
 			return Void.TYPE;
 		}, serializer::marshall);
-		log.debug(String.format("DELETE at %s/{id}", endpoint));
+		log.info(String.format("DELETE at %s/{id}", endpoint));
 		return this;
 	}
 

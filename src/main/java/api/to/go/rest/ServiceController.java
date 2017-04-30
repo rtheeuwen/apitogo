@@ -7,6 +7,8 @@ import javaslang.collection.HashMap;
 import javaslang.collection.List;
 import javaslang.collection.Map;
 import javaslang.control.Option;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import spark.Spark;
 
 import java.lang.reflect.Method;
@@ -28,6 +30,8 @@ public class ServiceController {
 			, "double", Double.class
 			, "char", Character.class
 	);
+
+	private static final Logger log = LoggerFactory.getLogger(ServiceController.class);
 
 	public static void of(Class<?> clazz) {
 
@@ -67,5 +71,7 @@ public class ServiceController {
 			}
 			return method.invoke(service, args);
 		}, serializer::marshall);
+		log.info("GET at localhost:8080/" + method.getName() + " with queryparameters "
+				+ List.ofAll(params.keySet()).intersperse(", ").reduce(String::concat));
 	}
 }

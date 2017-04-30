@@ -5,8 +5,15 @@ then
     >&2 echo 'Another process is listening on port 8080.'
     exit
 fi
+
 clear
+
 mvn clean package assembly:assembly
+if [ $? -ne 0 ]
+then
+    exit
+fi
+
 java -classpath ./target/test-classes:./target/apitogo-0.1-alpha-jar-with-dependencies.jar api.to.go.Example &
 JAVA_PID=$!
 sleep 3

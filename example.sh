@@ -1,5 +1,5 @@
 #!/bin/bash
-nc -z localhost 8080
+nc -z localhost 8080 >/dev/null 2>/dev/null
 if [ $? -eq 0 ];
 then
     >&2 echo 'Another process is listening on port 8080.'

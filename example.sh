@@ -1,4 +1,5 @@
 #!/bin/bash
+clear
 mvn clean package assembly:assembly
 java -classpath ./target/test-classes:./target/apitogo-0.1-alpha-jar-with-dependencies.jar api.to.go.Example &
 JAVA_PID=$!

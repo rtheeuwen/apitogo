@@ -34,7 +34,7 @@ public class Controller<T, I> {
 
 	public Controller<T, I> getAll(Supplier<Option<List<T>>> sup){
 		get(endpoint, (req, res) -> sup.get().getOrElseThrow(RuntimeException::new), serializer::marshall);
-		log.info(String.format("GET at %s", endpoint));
+		log.debug(String.format("GET at %s", endpoint));
 		return this;
 	}
 
@@ -48,7 +48,7 @@ public class Controller<T, I> {
 				return Void.TYPE;
 			}
 		}, serializer::marshall);
-		log.info(String.format("GET at %s/{id}", endpoint));
+		log.debug(String.format("GET at %s/{id}", endpoint));
 		return this;
 	}
 
@@ -64,7 +64,7 @@ public class Controller<T, I> {
 						return Void.TYPE;
 					}
 				}, serializer::marshall);
-		log.info(String.format("POST at %s", endpoint));
+		log.debug(String.format("POST at %s", endpoint));
 		return this;
 	}
 
@@ -79,7 +79,7 @@ public class Controller<T, I> {
 
 			return Void.TYPE;
 		}, serializer::marshall);
-		log.info(String.format("PUT at %s/{id}", endpoint));
+		log.debug(String.format("PUT at %s/{id}", endpoint));
 		return this;
 	}
 
@@ -92,7 +92,7 @@ public class Controller<T, I> {
 
 			return Void.TYPE;
 		}, serializer::marshall);
-		log.info(String.format("DELETE at %s/{id}", endpoint));
+		log.debug(String.format("DELETE at %s/{id}", endpoint));
 		return this;
 	}
 

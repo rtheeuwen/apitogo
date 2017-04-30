@@ -172,12 +172,12 @@ class MasterDaoImpl<T, I> implements MasterDao<T, I>{
 		try(Connection con = sql2o.beginTransaction()) {
 			Query query = con.createQuery(sql)
 					.addParameter("id", i);
-			log.info(query.toString());
+			log.debug(query.toString());
 
 			return Try.of(() -> {
 				try {
 					T t = query.executeAndFetchFirst(clazz);
-					log.info(t.toString());
+					log.debug(t.toString());
 					detailDaos.values().map(dao -> dao.byMasterIds(List.of(i), con))
 							.zipWith(detailDaos.keySet(), (value, detailClass) -> setFieldValue(detailClass.getSimpleName().toLowerCase()+"s", clazz, t, value));
 
